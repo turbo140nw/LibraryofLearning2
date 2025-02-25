@@ -82,11 +82,49 @@
             width: 100%;
             bottom: 0;
         }
+        /* Styling for the search bar */
+        .search-bar {
+            text-align: center;
+            margin: 20px auto;
+        }
+        .search-input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .search-btn {
+            padding: 10px 15px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .search-btn:hover {
+            background: #575757;
+        }
     </style>
     <script>
         function toggleSidebar() {
             let sidebar = document.querySelector('.sidebar');
             sidebar.classList.toggle('active');
+        }
+
+        function searchLibrary() {
+            var searchTerm = document.getElementById('search-input').value.toLowerCase();
+            if (searchTerm.includes('sermon') || searchTerm.includes('sermons')) {
+                window.location.href = 'sermons.html';
+            } else if (searchTerm.includes('lesson') || searchTerm.includes('lessons')) {
+                window.location.href = 'lessons.html';
+            } else if (searchTerm.includes('article') || searchTerm.includes('articles')) {
+                window.location.href = 'articles.html';
+            } else {
+                alert('No results found. Please try another term.');
+            }
         }
     </script>
 </head>
@@ -106,6 +144,11 @@
         <section class="content">
             <h2>Explore Faith, Knowledge, and Wisdom</h2>
             <p>Discover lessons, sermons, and articles to guide your journey.</p>
+        </section>
+        <!-- Search bar -->
+        <section class="search-bar">
+            <input type="text" id="search-input" class="search-input" placeholder="Search for sermons, lessons, or articles...">
+            <button class="search-btn" onclick="searchLibrary()">Search</button>
         </section>
     </main>
     <footer>
